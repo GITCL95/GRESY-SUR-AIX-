@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /mentions-legales.html
+
+Sitemap: https://osteopathe-gresy-sur-aix.fr/sitemap.xml

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page d'accueil — priorité maximale -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Consultation — mot-clé commercial fort -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/consultation.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pour qui — trafic longue traîne (bébé, sportif, enceinte) -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/pour-qui.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Le Cabinet -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/cabinet.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Urgence -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/urgence.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- À domicile -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/domicile.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact & RDV -->
+  <url>
+    <loc>https://osteopathe-gresy-sur-aix.fr/contact.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- mentions-legales.html : exclue (noindex dans le HTML) -->
+
+</urlset>

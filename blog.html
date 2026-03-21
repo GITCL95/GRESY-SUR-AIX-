@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Ostéopathie — Conseils & Actualités | Cabinet Grésy-sur-Aix</title>
+  <meta name="description" content="Retrouvez nos articles de blog sur l'ostéopathie à Grésy-sur-Aix : conseils santé, guides pratiques, actualités du cabinet et bien-être en Savoie.">
+  <link rel="canonical" href="https://osteopathe-gresy-sur-aix.fr/blog">
+  <meta property="og:title" content="Blog Ostéopathie — Cabinet Grésy-sur-Aix">
+  <meta property="og:description" content="Conseils santé, guides pratiques et actualités ostéopathiques pour les habitants de Grésy-sur-Aix et du bassin aixois.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://osteopathe-gresy-sur-aix.fr/blog">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- Blog listing ---- */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,132,73,0.13);
+    }
+
+    .blog-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #2aaf61 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .blog-card-body {
+      padding: var(--spacing-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      background: var(--color-primary-light);
+      color: var(--color-primary-dark);
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .blog-card-body h2 {
+      font-size: 1.1rem;
+      margin-bottom: var(--spacing-xs);
+      line-height: 1.4;
+    }
+    .blog-card-body h2 a {
+      color: var(--color-primary-dark);
+      text-decoration: none;
+    }
+    .blog-card-body h2 a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .blog-card-meta {
+      font-size: 0.78rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-sm);
+      display: flex;
+      gap: var(--spacing-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .blog-card-excerpt {
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-primary);
+      font-size: 0.84rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .blog-card-link:hover {
+      color: var(--color-primary-dark);
+      gap: 10px;
+      text-decoration: none;
+    }
+    .blog-card-link::after { content: '→'; }
+
+    /* Sidebar */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: var(--spacing-lg);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; }
+    }
+
+    .blog-sidebar {
+      position: sticky;
+      top: 80px;
+    }
+    .sidebar-widget {
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+    .sidebar-widget h3 {
+      font-size: 1rem;
+      margin-bottom: var(--spacing-sm);
+      padding-bottom: var(--spacing-xs);
+      border-bottom: 2px solid var(--color-primary-light);
+    }
+    .sidebar-widget ul { margin: 0; }
+    .sidebar-widget ul li { font-size: 0.88rem; padding-left: 1.2em; }
+
+    .sidebar-cta {
+      background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+      color: #fff;
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+    .sidebar-cta h3 { color: #fff; font-size: 1rem; margin-bottom: var(--spacing-xs); }
+    .sidebar-cta p  { font-size: 0.85rem; opacity: 0.9; margin-bottom: var(--spacing-sm); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">
+        Cabinet d'Ostéopathie de Grésy
+        <span>Ostéopathe à Grésy-sur-Aix — Savoie</span>
+      </a>
+      <button class="nav-burger" onclick="document.querySelector('.site-nav').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="cabinet.html">Le Cabinet</a>
+        <a href="consultation.html">Consultation</a>
+        <a href="pour-qui.html">Pour qui ?</a>
+        <a href="urgence.html">Urgence</a>
+        <a href="domicile.html">À domicile</a>
+        <a href="grid.html">Grid</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html" class="nav-cta">RDV ☎</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)), url('asset/image/Consultation-osteopathe.webp') center/cover no-repeat; padding: 3rem 1rem 3.5rem;">
+    <div class="hero-content">
+      <h1>Blog Ostéopathie</h1>
+      <p>Conseils santé, guides pratiques et actualités pour les patients du cabinet de Grésy-sur-Aix et du bassin aixois.</p>
+    </div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <div class="container">
+      <a href="/">Accueil</a>
+      <span>›</span>
+      <span>Blog</span>
+    </div>
+  </nav>
+
+  <!-- BLOG CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div class="blog-layout">
+
+        <!-- Articles -->
+        <main>
+          <div class="section-title" style="text-align:left; margin-bottom: var(--spacing-md);">
+            <h2>Tous nos articles</h2>
+          </div>
+
+          <div class="blog-grid">
+
+            <!-- Article 1 -->
+            <article class="blog-card">
+              <div class="blog-card-img-placeholder">🏆</div>
+              <div class="blog-card-body">
+                <span class="blog-tag">Guide & Sélection</span>
+                <h2><a href="blog/meilleur-osteopathe-gresy-sur-aix.html">Meilleur ostéopathe à Grésy-sur-Aix (73100) : notre sélection 2026</a></h2>
+                <div class="blog-card-meta">
+                  <span>📅 21 mars 2026</span>
+                  <span>⏱ 10 min de lecture</span>
+                </div>
+                <p class="blog-card-excerpt">Découvrez les 10 meilleurs ostéopathes à Grésy-sur-Aix et dans le bassin d'Aix-les-Bains. Avis patients, spécialités, adresses et conseils pour bien choisir votre praticien en 2026.</p>
+                <a href="blog/meilleur-osteopathe-gresy-sur-aix.html" class="blog-card-link">Lire l'article</a>
+              </div>
+            </article>
+
+            <!-- Article 2 — placeholder -->
+            <article class="blog-card">
+              <div class="blog-card-img-placeholder">🤱</div>
+              <div class="blog-card-body">
+                <span class="blog-tag">Pédiatrie</span>
+                <h2><a href="#">Ostéopathie pour bébé : coliques, plagiocéphalie et torticolis</a></h2>
+                <div class="blog-card-meta">
+                  <span>📅 Bientôt disponible</span>
+                </div>
+                <p class="blog-card-excerpt">Quand faut-il consulter un ostéopathe pour son nourrisson ? Quels troubles peut-on traiter dès les premières semaines ? Tout ce que les jeunes parents doivent savoir.</p>
+                <a href="contact.html" class="blog-card-link">Prendre RDV</a>
+              </div>
+            </article>
+
+            <!-- Article 3 — placeholder -->
+            <article class="blog-card">
+              <div class="blog-card-img-placeholder">🏃</div>
+              <div class="blog-card-body">
+                <span class="blog-tag">Sport</span>
+                <h2><a href="#">Ostéopathie du sport : prévenir les blessures en montagne (ski, trail, randonnée)</a></h2>
+                <div class="blog-card-meta">
+                  <span>📅 Bientôt disponible</span>
+                </div>
+                <p class="blog-card-excerpt">Ski, trail, vélo, randonnée dans les Bauges ou autour du lac du Bourget : comment l'ostéopathie aide les sportifs savoyards à prévenir et récupérer des blessures.</p>
+                <a href="contact.html" class="blog-card-link">Prendre RDV</a>
+              </div>
+            </article>
+
+            <!-- Article 4 — placeholder -->
+            <article class="blog-card">
+              <div class="blog-card-img-placeholder">🤰</div>
+              <div class="blog-card-body">
+                <span class="blog-tag">Périnatalité</span>
+                <h2><a href="#">Ostéopathie et grossesse : quand et pourquoi consulter ?</a></h2>
+                <div class="blog-card-meta">
+                  <span>📅 Bientôt disponible</span>
+                </div>
+                <p class="blog-card-excerpt">Douleurs de dos, sciatique, brûlures d'estomac, fatigue : l'ostéopathie accompagne les femmes enceintes tout au long de leur grossesse, de manière douce et sécurisée.</p>
+                <a href="contact.html" class="blog-card-link">Prendre RDV</a>
+              </div>
+            </article>
+
+          </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+
+          <div class="sidebar-widget">
+            <h3>📂 Catégories</h3>
+            <ul>
+              <li>Guide & Sélection <span style="color:var(--color-text-light);font-size:0.8em;">(1)</span></li>
+              <li>Pédiatrie</li>
+              <li>Sport & Performance</li>
+              <li>Périnatalité</li>
+              <li>Bien-être & Prévention</li>
+              <li>Conseils pratiques</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>🔗 Pages utiles</h3>
+            <ul>
+              <li><a href="consultation.html">Déroulement d'une séance</a></li>
+              <li><a href="pour-qui.html">Ostéopathie pour qui ?</a></li>
+              <li><a href="domicile.html">Consultations à domicile</a></li>
+              <li><a href="urgence.html">Consultation en urgence</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-cta">
+            <h3>Prenez rendez-vous</h3>
+            <p>Cabinet à Grésy-sur-Aix, à deux pas d'Aix-les-Bains.</p>
+            <a href="tel:+33479354217" class="btn btn-white" style="display:block; margin-bottom:0.5rem;">☎ 04 79 35 42 17</a>
+            <a href="contact.html" class="btn btn-secondary" style="display:block;">Formulaire de contact</a>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Une question ? Besoin d'un rendez-vous ?</h2>
+      <p>Le cabinet vous accueille du lundi au vendredi de 9h à 19h et le samedi matin, sans ordonnance.</p>
+      <a href="tel:+33479354217" class="tel-big">☎ 04 79 35 42 17</a><br>
+      <a href="contact.html" class="btn btn-white">Formulaire de contact</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Cabinet d'Ostéopathie de Grésy — Aix-les-Bains</div>
+          <address class="footer-nap">
+            <p>Votre ostéopathe à Grésy-sur-Aix</p>
+            2 route d'Aix<br>
+            73100 Grésy-sur-Aix<br>
+            <a href="tel:+33479354217">04 79 35 42 17</a><br><br>
+            Lun–Ven : 9h00–19h00<br>
+            Samedi : 9h00–13h00
+          </address>
+        </div>
+        <div class="footer-col">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="cabinet.html">Le Cabinet</a></li>
+            <li><a href="consultation.html">Consultation</a></li>
+            <li><a href="pour-qui.html">Pour qui ?</a></li>
+            <li><a href="urgence.html">Urgence</a></li>
+            <li><a href="domicile.html">À domicile</a></li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact &amp; RDV</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Zones desservies</h3>
+          <ul>
+            <li>Grésy-sur-Aix</li>
+            <li>Aix-les-Bains</li>
+            <li>Méry</li>
+            <li>Mouxy</li>
+            <li>Saint-Offenge</li>
+            <li>Trévignin</li>
+          </ul>
+          <a href="mentions-legales.html" style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;display:block;">Mentions légales</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Cabinet d'Ostéopathie de Grésy — Aix-les-Bains · Ostéopathe à Grésy-sur-Aix · <a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
